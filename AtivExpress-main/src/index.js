@@ -8,7 +8,7 @@ const pool = new Pool({
 
 const app = express();
 
-const PORT = 30; 
+const PORT = 40; 
 
 app.use(express.json());
 
@@ -41,10 +41,10 @@ app.post('/session', async (req, res) => {
     }
 });
 
-app.delete('/session/:username', async (req, res) => {
-    const { username } = req.params;
+app.delete('/session/:useridade', async (req, res) => {
+    const { useridade } = req.params;
     try {
-        const deletedCURRICULUM = await pool.query('DELETE FROM CURRICULUM WHERE user_name = $1 RETURNING *', [username]);
+        const deletedCURRICULUM = await pool.query('DELETE FROM CURRICULUM WHERE user_idade = $1 RETURNING *', [useridade]);
         if (deletedCURRICULUM.rows.length === 0) {
             return res.status(404).send('Registro não encontrado');
         } else {
@@ -55,4 +55,6 @@ app.delete('/session/:username', async (req, res) => {
     }
 });
 
+
 app.listen(PORT, () => console.log(`server running on port ${PORT}`));
+
