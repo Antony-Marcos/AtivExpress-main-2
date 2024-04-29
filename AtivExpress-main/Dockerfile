@@ -9,6 +9,6 @@ RUN npm install
 # If you are building your code for production
 # RUN npm ci --omit=dev
 
-ENV PORT 30
-EXPOSE 30
+ENV PORT 40
+EXPOSE 40
 CMD [ "npm", "start" ]
