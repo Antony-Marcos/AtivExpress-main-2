@@ -30,7 +30,7 @@ app.post('/session', async (req, res) => {
     try {
         let CURRICULUM = await pool.query('SELECT * FROM CURRICULUM WHERE user_name = $1 AND user_profissao = $2 AND user_idade = $3', [username, userprofissao, useridade]);
         if (CURRICULUM.rows.length === 0) {
-            // Se não houver entrada para este usuário, insira no banco de dados
+            
             CURRICULUM = await pool.query('INSERT INTO CURRICULUM (user_name, user_profissao, user_idade) VALUES ($1, $2, $3) RETURNING *', [username, userprofissao, useridade]);
             return res.status(200).send(CURRICULUM.rows[0]); 
         } else {
